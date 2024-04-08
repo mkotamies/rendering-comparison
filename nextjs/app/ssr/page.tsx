@@ -1,6 +1,6 @@
 "use server";
 import Players from "../players";
-import players from "../../../../players.json";
+import players from "../../../players.json";
 
 export default async function Home() {
   return (

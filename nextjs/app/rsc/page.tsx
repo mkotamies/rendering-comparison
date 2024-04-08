@@ -1,5 +1,5 @@
 import Players from "../players";
-import players from "../../../../players.json";
+import players from "../../../players.json";
 import PlayerComp from "../player";
 
 export default function Home() {
