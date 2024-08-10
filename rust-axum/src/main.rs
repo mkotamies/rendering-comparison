@@ -4,7 +4,7 @@ use std::{
 
 use axum::{
     extract::State,
-    http::{header, HeaderMap, HeaderValue, StatusCode},
+    http::{header::{CONTENT_ENCODING, CONTENT_TYPE}, StatusCode},
     response::IntoResponse,
     routing::get,
     Router,
@@ -73,20 +73,16 @@ async fn render_html(State(players): State<Arc<[Player]>>) -> impl IntoResponse 
         </html>
     };
 
-    let mut header_map = HeaderMap::new();
+    let headers = [(CONTENT_TYPE, TEXT_HTML_UTF_8.as_ref()), (CONTENT_ENCODING, "gzip")];
 
-    header_map.insert(header::CONTENT_TYPE, HeaderValue::from_static(TEXT_HTML_UTF_8.as_ref()));
-    header_map.insert(header::CONTENT_ENCODING, HeaderValue::from_static("gzip"));
-
-    (StatusCode::OK, header_map, compress_to_gzip(html_nodes.to_string().as_bytes()))
+    (headers, compress_to_gzip(html_nodes.to_string().as_bytes()))
 }
 
 async fn read_styles() -> impl IntoResponse {
     match fs::read("./assets/styles.css") {
         Ok(styles_css) => {
-            let mut header_map = HeaderMap::new();
-            header_map.insert(header::CONTENT_ENCODING, HeaderValue::from_static("gzip"));
-            (header_map, compress_to_gzip(&styles_css)).into_response()
+            let headers = [(CONTENT_ENCODING, "gzip")];
+            (headers, compress_to_gzip(&styles_css)).into_response()
         }
         Err(_) => (StatusCode::NOT_FOUND, "Styles not found").into_response(),
     }
