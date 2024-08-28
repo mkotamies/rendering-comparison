@@ -10,3 +10,4 @@ It's not unusual that excel file has 20 000 lines of data. Rendering the data wi
 3. Next.js with CSR
 4. GO & HTMX - TODO: and/or just GO?
 5. Excel - TODO: is it worth it?
+6. F# with Giraffe
