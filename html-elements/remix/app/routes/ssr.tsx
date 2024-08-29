@@ -1,4 +1,4 @@
-import players from "../../../players.json";
+import players from "../../../../players.json";
 import { useLoaderData } from "@remix-run/react";
 
 export async function loader() {

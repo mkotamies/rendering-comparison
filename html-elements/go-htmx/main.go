@@ -1,12 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
-	"encoding/json"
+
 	"github.com/gorilla/handlers"
 )
 
@@ -43,7 +44,7 @@ func readPlayersFromFile(filePath string) ([]Player, error) {
 
 func main() {
 	fmt.Println("Go app...")
-	players, err := readPlayersFromFile("../players.json")
+	players, err := readPlayersFromFile("../../players.json")
 	if err != nil {
 		fmt.Println("Error:", err)
 		return

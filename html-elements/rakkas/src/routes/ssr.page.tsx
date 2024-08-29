@@ -1,5 +1,5 @@
 import { useServerSideQuery, Page } from "rakkasjs";
-import playerData from "../../../players.json";
+import playerData from "../../../../players.json";
 
 const SSR: Page = function SSR() {
   const players = useServerSideQuery(() => {

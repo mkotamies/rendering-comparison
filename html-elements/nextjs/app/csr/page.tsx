@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Players from "../players";
-import playersJson from "../../../../players.json";
+import playersJson from "../../../../../players.json";
 import type { Players as PlayersType } from "../players";
 
 export default function Home() {

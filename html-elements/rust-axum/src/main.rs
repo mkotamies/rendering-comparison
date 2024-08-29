@@ -39,7 +39,7 @@ fn compress_to_gzip(bytes: &[u8]) -> Vec<u8> {
 
 /// Return Arc so we don't clone the whole vector, but instead just the pointer reference
 fn read_players() -> Result<Arc<[Player]>, Box<dyn Error>> {
-    let file = File::open("../players.json")?;
+    let file = File::open("../../players.json")?;
     let players_json: PlayersJson = serde_json::from_reader(BufReader::new(file))?;
     Ok(Arc::from(players_json.players))
 }
