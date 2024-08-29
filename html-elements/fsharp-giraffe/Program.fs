@@ -7,7 +7,7 @@ type Player = { name: string; score: uint }
 type Players = { players: Player[] }
 
 let players =
-    "../players.json"
+    "../../players.json"
     |> System.IO.File.OpenRead
     |> System.Text.Json.JsonSerializer.Deserialize<Players>
     |> _.players
